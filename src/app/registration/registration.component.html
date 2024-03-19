@@ -1,37 +1,43 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 style="padding-bottom: 30px; padding-left: 30px; color: brown; ">Resume Form</h1>
+            <h1 style="padding-bottom: 30px; padding-left: 30px; color: brown; ">Profile Form</h1>
             <form action="" [formGroup]="profileForm" (ngSubmit)="onAddprofile(profileForm.value)">
 
                 <div class="form-group">
                     <label for="fname">First Name  *</label>
                     <input type="text" class="form-control" id="fname" formControlName="firstName">
-                    <span class="help-block" *ngIf="!profileForm.get('firstName')?.valid&&profileForm.get('firstName')?.touched" >please enter valid firstName</span>
+                    <span class="help-block" *ngIf="!profileForm.get('firstName')?.valid&&profileForm.get('firstName')?.touched" >please enter a valid firstName</span>
 
                 </div>
 
                 <div class="form-group">
                     <label for="">Last Name  </label>
                     <input type="text" class="form-control"  formControlName="lastName">
-                    <span class="help-block" *ngIf="!profileForm.get('lastName')?.valid&&profileForm.get('lastName')?.touched" >please enter valid lastName</span>
                 </div>
 
                 <div class="form-group" style="padding-top: 20px;">
                     <label for="dateofbirth">Date Of Birth: *</label>
                     <input type="date" id="dateofbirth" name="dateofbirth" formControlName="dateofbirth">
+<div>
+    <span class="help-block" *ngIf="!profileForm.get('dateofbirth')?.valid&&profileForm.get('dateofbirth')?.touched" >date of birth is a required field </span>
+
+</div>
                 </div>
 
                 <div class="form-group" style="padding-top: 20px;">
                     <label for="">Email  *</label>
                     <input type="text" class="form-control" formControlName="email">
-                    <span class="help-block" *ngIf="!profileForm.get('email')?.valid&&profileForm.get('email')?.touched" >please enter valid email</span>
+                    <span class="help-block" *ngIf="!profileForm.get('email')?.valid&&profileForm.get('email')?.touched" >please enter a valid email</span>
                 </div>
                 
                 <div class="form-group" style="padding-top: 20px;">
                     <label for="" class="radio-inline">Gender :
                     <div *ngFor="let gender of genders" class="form-check form-check-inline">
                         <input type="radio" name="gender" [value]="gender" formControlName="gender" >{{gender}}
+                    <span class="help-block" *ngIf="!profileForm.get('gender')?.valid&&profileForm.get('gender')?.touched" >gender is a required field </span>
+
+
                     
                     </div>
                 </label>
@@ -44,6 +50,11 @@
                                 <input type="checkbox"  (change)="checkboxchange($event)" formControlName="{{lang}}" > {{lang}}
                             </label>
                     </div>
+                    <!-- <div>
+                        <span class="help-block" *ngIf="!profileForm.get('languages')?.valid&&profileForm.get('languages')?.touched" >please select atleast 1 language</span>
+    
+                        </div> -->
+                    
             
             </div> 
                     
@@ -54,6 +65,10 @@
                 <div class="form-group" style="padding-top: 10px;">
                     <label for="house_no">House No. *</label>
                     <input type="house_no" class="form-control" id="house_no" formControlName="house_no">
+                    <div>
+                    <span class="help-block" *ngIf="!profileForm.get('email')?.valid&&profileForm.get('email')?.touched" >House No. is a required field</span>
+
+                    </div>
 
                 </div>
 
@@ -73,9 +88,10 @@
       <option value="" disabled selected>Select City</option>
       <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
     </select>
-    <!-- <div *ngIf="profileForm.get('address.city').invalid && profileForm.get('address.city').touched" class="help-block">
-      City is required
-    </div> -->
+    <div>
+        <span class="help-block" *ngIf="!profileForm.get('address.city')?.valid&&profileForm.get('address.city')?.touched" >city is a required field</span>
+        </div>
+    
   </div>
 
   <div>
@@ -84,16 +100,18 @@
       <option value="" disabled selected>Select State</option>
       <option *ngFor="let state of states" [value]="state">{{ state }}</option>
     </select>
-    <!-- <div *ngIf="profileForm.get('address.district')?.invalid && profileForm.get('address.district')?.touched" class="help-block">
-      State is required
-    </div> -->
+    <div>
+        <span class="help-block" *ngIf="!profileForm.get('address.state')?.valid&&profileForm.get('address.state')?.touched" >state is a required field</span>
+        </div>
   </div>
 
 
                 <div class="form-group">
                     <label for="pincode">Pincode  *</label>
                     <input type="text" class="form-control" id="pincode" formControlName="pincode">
-                    <span class="help-block" *ngIf="!profileForm.get('address.pincode')?.valid&&profileForm.get('address.pincode')?.touched" >please enter valid pincode</span>
+                    <div>
+                        <span class="help-block" *ngIf="!profileForm.get('address.pincode')?.valid&&profileForm.get('address.pincode')?.touched" >pincode is a required field</span>
+                        </div>
 
                 </div>
 
@@ -102,11 +120,11 @@
             <div formArrayName="experience">
                 <ng-container *ngFor="let exp of addexp,let i=index" [formGroupName]="i">
                     <h5>Experience</h5>
-                    <input type="text" placeholder="company name" formControlName="companyname">
-                    <input type="text" placeholder="position" formControlName="position">
+                    <input type="text" placeholder="company name  *" formControlName="companyname">
+                    <input type="text" placeholder="position  *" formControlName="position">
                     <div formGroupName="years"> 
-                        <input type="date" placeholder="date of joining" formControlName="dateofjoining">
-                        <input type="date" placeholder="date of resign" formControlName="dateofresign">
+                        <input type="date" placeholder="date of joining  *" formControlName="dateofjoining">
+                        <input type="date" placeholder="date of resign  *" formControlName="dateofresign">
                      </div>
                     
                     <button class="btn btn-sm btn-danger" (click)="onExpRemove(i)">Remove Experience</button>
