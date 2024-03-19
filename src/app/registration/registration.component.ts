@@ -14,8 +14,11 @@ export class RegistrationComponent implements OnInit{
   profileForm!: FormGroup;
   userSelectedLanguages:[]=[];
 
+  count=0;
+  languageSelected:boolean=false;
+
   genders=['Male','Female','Others'];
-  languages=['Engilsh','Hindi','Malayalam','Tamil','Others']
+  languagesList:string[]=['english','hindi','malayalam','tamil','others']
   cities=['a','b','c','d'];
   states=['a','b','c','d'];
   get addexp(){
@@ -41,7 +44,7 @@ export class RegistrationComponent implements OnInit{
         email:new FormControl(null,[Validators.required,Validators.email]),
         gender:new FormControl(null),
         languages:new FormGroup({
-          english:new FormControl(false,Validators.requiredTrue),
+          english:new FormControl(false,Validators.required),
           hindi:new FormControl(false,Validators.required),
           malayalam:new FormControl(false,Validators.required),
           tamil:new FormControl(false,Validators.required),
@@ -93,10 +96,23 @@ export class RegistrationComponent implements OnInit{
    
     this.profileForm.reset()
   }
-  selectedLanguages():void{
-
-    
-    
+  checkboxchange(event:any){
+    if(event.target.checked){
+      this.count+=1
+      console.log(this.count);
+      
+    }
+    else{
+      this.count-=1
+      console.log(this.count);
+      
+    }
+    if(this.count>0){
+      this.languageSelected=true
+    }
+    else{
+      this.languageSelected=false
+    }
   }
 
 }

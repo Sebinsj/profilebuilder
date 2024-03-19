@@ -36,39 +36,18 @@
                     </div>
                 </label>
                 </div>
-       <div formGroupName="languages">
-        <label for="">Languages Known :</label>
-        <div  style="padding-top: 5px;">
-                <label for="" >
-                    <input type="checkbox" formControlName="english">English
-                </label>
-        </div>
-
-        <div  >
-                <label for="" >
-                    <input type="checkbox" formControlName="hindi">Hindi
-                </label>
-        </div>
-
-        <div >
-                <label for="" >
-                    <input type="checkbox" formControlName="malayalam">Malayalam
-                </label>
-        </div>
-
-        <div >
-                <label for="" >
-                    <input type="checkbox" formControlName="tamil">Tamil
-                </label>
-        </div>
-
-        <div >
-                <label for="" >
-                    <input type="checkbox" formControlName="others">Others
-                </label>
-        </div>
-
-        </div>
+      
+          <div formGroupName="languages">
+                    <label for="">Languages Known :</label>
+                    <div *ngFor="let lang of languagesList" style="padding-top: 5px;">
+                            <label for="" >
+                                <input type="checkbox"  (change)="checkboxchange($event)" formControlName="{{lang}}" > {{lang}}
+                            </label>
+                    </div>
+            
+            </div> 
+                    
+       
               
             <div formGroupName="address" style="padding-top: 20px;">
                 <label for="">Address :</label>
@@ -142,7 +121,7 @@
             </div>
 
                 <div style="padding-top: 20px;">
-                    <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid">Submit</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid || !languageSelected">Submit</button>
                     <button type="reset" class="btn btn-danger">Reset</button>
                 </div>
                
