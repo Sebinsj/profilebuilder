@@ -42,6 +42,12 @@
                     </div>
                 </label>
                 </div>
+                <!-- <div class="form-group">
+                    <label for="profileImage">Profile Image</label>
+                    <input type="file" id="profileImage" (change)="onFileSelected($event)" accept="image/*">
+                </div>
+                 -->
+                
       
           <div formGroupName="languages">
                     <label for="">Languages Known: *</label>
@@ -66,7 +72,7 @@
                     <label for="house_no">House No. *</label>
                     <input type="house_no" class="form-control" id="house_no" formControlName="house_no">
                     <div>
-                    <span class="help-block" *ngIf="!profileForm.get('email')?.valid&&profileForm.get('email')?.touched" >House No. is a required field</span>
+                    <span class="help-block" *ngIf="!profileForm.get('address.house_no')?.valid&&profileForm.get('address.house_no')?.touched" >House No. is a required field</span>
 
                     </div>
 
@@ -110,21 +116,83 @@
                     <label for="pincode">Pincode  *</label>
                     <input type="text" class="form-control" id="pincode" formControlName="pincode">
                     <div>
-                        <span class="help-block" *ngIf="!profileForm.get('address.pincode')?.valid&&profileForm.get('address.pincode')?.touched" >pincode is a required field</span>
+                        <span class="help-block" *ngIf="!profileForm.get('address.pincode')?.valid&&profileForm.get('address.pincode')?.touched" >please enter a valid pincode</span>
                         </div>
 
                 </div>
 
             </div>
 
-            <div formArrayName="experience">
+            <!-- <div formArrayName="experience">
+                <ng-container *ngFor="let exp of addexp; let i=index" [formGroupName]="i">
+                  <h5>Experience</h5>
+                  <div class="form-group">
+                    <label for="companyname">Company Name:  * </label>
+                    <input type="text" placeholder="companyname" formControlName="companyname">
+                    <div *ngIf="profileForm.get('experience.' + i + '.companyname').invalid && profileForm.get('experience.' + i + '.companyname').touched">
+                      <span class="help-block">Company Name is required.</span>
+                    </div>
+                  </div>
+              
+                  <div class="form-group">
+                    <label for="position">Position:  *</label>
+                    <input type="text" placeholder="position" formControlName="position">
+                    <div *ngIf="profileForm.get('experience.' + i + '.position').invalid && profileForm.get('experience.' + i + '.position').touched">
+                      <span class="help-block">Position is required.</span>
+                    </div>
+                  </div>
+              
+                  <div formGroupName="years">
+                    <div class="form-group">
+                      <label for="dateofjoining">Date of Joining *</label>
+                      <input type="date" placeholder="date of joining" formControlName="dateofjoining">
+                      <div *ngIf="profileForm.get('experience.' + i + '.years.dateofjoining').invalid && profileForm.get('experience.' + i + '.years.dateofjoining').touched">
+                        <span class="help-block">Date of Joining is required.</span>
+                      </div>
+                    </div>
+              
+                    <div class="form-group">
+                      <label for="dateofresign">Date of Resign *</label>
+                      <input type="date" placeholder="date of resign" formControlName="dateofresign">
+                      <div *ngIf="profileForm.get('experience.' + i + '.years.dateofresign').invalid && profileForm.get('experience.' + i + '.years.dateofresign').touched">
+                        <span class="help-block">Date of Resign is required.</span>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <button class="btn btn-sm btn-danger" (click)="onExpRemove(i)">Remove Experience</button>
+                </ng-container>
+              
+                <div class="form-group">
+                  <p class="btn btn-sm btn-primary" (click)="onExpAdd()">Add Experience</p>
+                </div>
+              </div> -->
+
+
+              <div formArrayName="experience">
                 <ng-container *ngFor="let exp of addexp,let i=index" [formGroupName]="i">
                     <h5>Experience</h5>
+
                     <input type="text" placeholder="company name  *" formControlName="companyname">
+                    <div *ngIf="profileForm.get('experience.' + i + '.companyname').invalid && profileForm.get('experience.' + i + '.companyname').touched">
+                        <span class="help-block">Company Name is required.</span>
+                      </div>
+
                     <input type="text" placeholder="position  *" formControlName="position">
+                    <div *ngIf="profileForm.get('experience.' + i + '.position').invalid && profileForm.get('experience.' + i + '.position').touched">
+                        <span class="help-block">Position is required.</span>
+                      </div>
+
                     <div formGroupName="years"> 
                         <input type="date" placeholder="date of joining  *" formControlName="dateofjoining">
+                        <div *ngIf="profileForm.get('experience.' + i + '.years.dateofjoining').invalid && profileForm.get('experience.' + i + '.years.dateofjoining').touched">
+                            <span class="help-block">Date of Joining is required.</span>
+                          </div>
+
                         <input type="date" placeholder="date of resign  *" formControlName="dateofresign">
+                        <div *ngIf="profileForm.get('experience.' + i + '.years.dateofresign').invalid && profileForm.get('experience.' + i + '.years.dateofresign').touched">
+                            <span class="help-block">Date of Resign is required.</span>
+                          </div>
                      </div>
                     
                     <button class="btn btn-sm btn-danger" (click)="onExpRemove(i)">Remove Experience</button>
@@ -138,6 +206,7 @@
                 
             </div>
 
+              
                 <div style="padding-top: 20px;">
                     <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid || !languageSelected">Submit</button>
                     <button type="reset" class="btn btn-danger">Reset</button>

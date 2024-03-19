@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrl: './registration.component.css'
 })
 export class RegistrationComponent implements OnInit{
+  selectedFile: File;
   constructor(private profileService:ProfileService,private router:Router){}
   
   profileForm!: FormGroup;
@@ -43,6 +44,9 @@ export class RegistrationComponent implements OnInit{
         dateofbirth:new FormControl(null,Validators.required),
         email:new FormControl(null,[Validators.required,Validators.email]),
         gender:new FormControl(null,Validators.required),
+
+        // profileImage: new FormControl(null),
+
         languages:new FormGroup({
           english:new FormControl(false,Validators.required),
           hindi:new FormControl(false,Validators.required),
@@ -114,5 +118,15 @@ export class RegistrationComponent implements OnInit{
       this.languageSelected=false
     }
   }
+
+  // onFileSelected(event: any) {
+  //   const file: File = event.target.files[0];
+  //   if (file) {
+  //     this.selectedFile = file;
+  //     this.profileForm.patchValue({
+  //       profileImage: file
+  //     });
+  //   }
+  // }
 
 }
