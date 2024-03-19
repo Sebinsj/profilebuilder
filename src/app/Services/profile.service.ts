@@ -28,4 +28,8 @@ export class ProfileService{
        
            
        }
+
+       deleteProfile(id:string){
+        return this.http.delete('https://profilebuilderbyssj-default-rtdb.firebaseio.com/profiles/'+id+'.json')
+       }
 }

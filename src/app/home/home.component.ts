@@ -29,4 +29,10 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  onDeleteProfile(id:string){
+    this.ProfileService.deleteProfile(id).subscribe(()=>{
+      this.fetchProfiles()
+    })
+  }
+
 }
