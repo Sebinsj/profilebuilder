@@ -123,52 +123,7 @@
 
             </div>
 
-            <!-- <div formArrayName="experience">
-                <ng-container *ngFor="let exp of addexp; let i=index" [formGroupName]="i">
-                  <h5>Experience</h5>
-                  <div class="form-group">
-                    <label for="companyname">Company Name:  * </label>
-                    <input type="text" placeholder="companyname" formControlName="companyname">
-                    <div *ngIf="profileForm.get('experience.' + i + '.companyname').invalid && profileForm.get('experience.' + i + '.companyname').touched">
-                      <span class="help-block">Company Name is required.</span>
-                    </div>
-                  </div>
-              
-                  <div class="form-group">
-                    <label for="position">Position:  *</label>
-                    <input type="text" placeholder="position" formControlName="position">
-                    <div *ngIf="profileForm.get('experience.' + i + '.position').invalid && profileForm.get('experience.' + i + '.position').touched">
-                      <span class="help-block">Position is required.</span>
-                    </div>
-                  </div>
-              
-                  <div formGroupName="years">
-                    <div class="form-group">
-                      <label for="dateofjoining">Date of Joining *</label>
-                      <input type="date" placeholder="date of joining" formControlName="dateofjoining">
-                      <div *ngIf="profileForm.get('experience.' + i + '.years.dateofjoining').invalid && profileForm.get('experience.' + i + '.years.dateofjoining').touched">
-                        <span class="help-block">Date of Joining is required.</span>
-                      </div>
-                    </div>
-              
-                    <div class="form-group">
-                      <label for="dateofresign">Date of Resign *</label>
-                      <input type="date" placeholder="date of resign" formControlName="dateofresign">
-                      <div *ngIf="profileForm.get('experience.' + i + '.years.dateofresign').invalid && profileForm.get('experience.' + i + '.years.dateofresign').touched">
-                        <span class="help-block">Date of Resign is required.</span>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <button class="btn btn-sm btn-danger" (click)="onExpRemove(i)">Remove Experience</button>
-                </ng-container>
-              
-                <div class="form-group">
-                  <p class="btn btn-sm btn-primary" (click)="onExpAdd()">Add Experience</p>
-                </div>
-              </div> -->
-
-
+       <!-- Experience -->
               <div formArrayName="experience">
                 <ng-container *ngFor="let exp of addexp,let i=index" [formGroupName]="i">
                     <h5>Experience</h5>

@@ -1,1 +1,36 @@
-<p>home works!</p>
+<div class="container">
+    <div class="row">
+      <h1 class="heading">All Tasks</h1>
+      <button class="btn btn-primary" routerLink="/CreateTask">Add a New Task</button>
+
+      <div *ngIf="allProfiles.length<1&&!isFetching">
+      <h5>No Tasks Available</h5>
+      </div>
+
+      <div *ngIf="isFetching">
+        <h5>Loading........</h5>
+        </div>
+        
+
+      <div *ngFor="let prof of allProfiles;index as i">
+        <div class="form-group" style="padding-top: 20px;">
+          <div class="form-control">
+            <h5>{{i+1}}. </h5>
+            <h5>  Fullname: {{ prof.firstName }} {{prof.lastName}}</h5>
+            <p>   Gender: {{prof.gender}} </p>
+            <p>   Date Of Birth(YYYY:MM:DD): {{prof.dateofbirth}} </p>
+            
+            
+            <button class="btn-delete" >Delete </button>
+            <button class="btn-edit" >Edit </button>
+            <button class="btn-view" >View</button>
+
+            
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  
