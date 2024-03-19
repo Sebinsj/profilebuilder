@@ -39,10 +39,10 @@ export class RegistrationComponent implements OnInit{
   ngOnInit(): void {
       this.profileForm=new FormGroup({
         firstName: new FormControl(null,Validators.required),
-        lastName:new FormControl(null,Validators.required),
-        dateofbirth:new FormControl(null),
+        lastName:new FormControl(null),
+        dateofbirth:new FormControl(null,Validators.required),
         email:new FormControl(null,[Validators.required,Validators.email]),
-        gender:new FormControl(null),
+        gender:new FormControl(null,Validators.required),
         languages:new FormGroup({
           english:new FormControl(false,Validators.required),
           hindi:new FormControl(false,Validators.required),
@@ -52,7 +52,7 @@ export class RegistrationComponent implements OnInit{
         }),
 
         address:new FormGroup({
-          house_no:new FormControl(null),
+          house_no:new FormControl(null,Validators.required),
           street:new FormControl(null),
           city:new FormControl(null,Validators.required),
           state:new FormControl(null,Validators.required),
