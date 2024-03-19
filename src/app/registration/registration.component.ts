@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProfileService } from '../Services/profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -7,6 +9,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './registration.component.css'
 })
 export class RegistrationComponent implements OnInit{
+  constructor(private profileService:ProfileService,private router:Router){}
   
   profileForm!: FormGroup;
   userSelectedLanguages:[]=[];
@@ -58,9 +61,15 @@ export class RegistrationComponent implements OnInit{
 
       });
   }
+
+  //Profile Add
   onAddprofile(profile:any){
     console.log(profile);
     alert('Form Submitted Sucessfully')
+    this.profileService.createProfile(profile).subscribe((res)=>{
+      this.router.navigate(['/'])
+
+    })
     
     
   }
