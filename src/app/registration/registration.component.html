@@ -1,1 +1,155 @@
-<p>registration works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 style="padding-bottom: 30px; padding-left: 30px; color: brown; ">Resume Form</h1>
+            <form action="" [formGroup]="profileForm" (ngSubmit)="onAddprofile(profileForm.value)">
+
+                <div class="form-group">
+                    <label for="fname">First Name  *</label>
+                    <input type="text" class="form-control" id="fname" formControlName="firstName">
+                    <span class="help-block" *ngIf="!profileForm.get('firstName')?.valid&&profileForm.get('firstName')?.touched" >please enter valid firstName</span>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="">Last Name  *</label>
+                    <input type="text" class="form-control"  formControlName="lastName">
+                    <span class="help-block" *ngIf="!profileForm.get('lastName')?.valid&&profileForm.get('lastName')?.touched" >please enter valid lastName</span>
+                </div>
+
+                <div class="form-group" style="padding-top: 20px;">
+                    <label for="dateofbirth">Date Of Birth:</label>
+                    <input type="date" id="dateofbirth" name="dateofbirth" formControlName="dateofbirth">
+                </div>
+
+                <div class="form-group" style="padding-top: 20px;">
+                    <label for="">Email  *</label>
+                    <input type="text" class="form-control" formControlName="email">
+                    <span class="help-block" *ngIf="!profileForm.get('email')?.valid&&profileForm.get('email')?.touched" >please enter valid email</span>
+                </div>
+                
+                <div class="form-group" style="padding-top: 20px;">
+                    <label for="" class="radio-inline">Gender :
+                    <div *ngFor="let gender of genders" class="form-check form-check-inline">
+                        <input type="radio" name="gender" [value]="gender" formControlName="gender" >{{gender}}
+                    
+                    </div>
+                </label>
+                </div>
+       <div formGroupName="languages">
+        <label for="">Languages Known :</label>
+        <div  style="padding-top: 5px;">
+                <label for="" >
+                    <input type="checkbox" formControlName="english">English
+                </label>
+        </div>
+
+        <div  >
+                <label for="" >
+                    <input type="checkbox" formControlName="hindi">Hindi
+                </label>
+        </div>
+
+        <div >
+                <label for="" >
+                    <input type="checkbox" formControlName="malayalam">Malayalam
+                </label>
+        </div>
+
+        <div >
+                <label for="" >
+                    <input type="checkbox" formControlName="tamil">Tamil
+                </label>
+        </div>
+
+        <div >
+                <label for="" >
+                    <input type="checkbox" formControlName="others">Others
+                </label>
+        </div>
+
+        </div>
+              
+            <div formGroupName="address" style="padding-top: 20px;">
+                <label for="">Address :</label>
+                <div class="form-group" style="padding-top: 10px;">
+                    <label for="house_no">House No.</label>
+                    <input type="house_no" class="form-control" id="house_no" formControlName="house_no">
+
+                </div>
+
+
+                
+                <div class="form-group" style="padding-top: 10px;">
+                    <label for="street">Street</label>
+                    <input type="street" class="form-control" id="street" formControlName="street">
+
+                </div>
+
+
+                
+  <div>
+    <label for="city">City *</label>
+    <select id="city" formControlName="city" class="form-control">
+      <option value="" disabled selected>Select City</option>
+      <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+    </select>
+    <!-- <div *ngIf="profileForm.get('address.city').invalid && profileForm.get('address.city').touched" class="help-block">
+      City is required
+    </div> -->
+  </div>
+
+  <div>
+    <label for="state">State *</label>
+    <select id="state" formControlName="state" class="form-control">
+      <option value="" disabled selected>Select State</option>
+      <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+    </select>
+    <!-- <div *ngIf="profileForm.get('address.district')?.invalid && profileForm.get('address.district')?.touched" class="help-block">
+      State is required
+    </div> -->
+  </div>
+
+
+                <div class="form-group">
+                    <label for="pincode">Pincode  *</label>
+                    <input type="text" class="form-control" id="pincode" formControlName="pincode">
+                    <span class="help-block" *ngIf="!profileForm.get('address.pincode')?.valid&&profileForm.get('address.pincode')?.touched" >please enter valid pincode</span>
+
+                </div>
+
+            </div>
+
+            <div formArrayName="experience">
+                <ng-container *ngFor="let exp of addexp,let i=index" [formGroupName]="i">
+                    <h5>Experience</h5>
+                    <input type="text" placeholder="company name" formControlName="companyname">
+                    <input type="text" placeholder="position" formControlName="position">
+                    <div formGroupName="years"> 
+                        <input type="date" placeholder="date of joining" formControlName="dateofjoining">
+                        <input type="date" placeholder="date of resign" formControlName="dateofresign">
+                     </div>
+                    
+                    <button class="btn btn-sm btn-danger" (click)="onExpRemove(i)">Remove Experience</button>
+
+                    
+                </ng-container>
+               <div class="form-group">
+                <p class="btn btn-sm btn-primary" (click)="onExpAdd()">Add Experience</p>
+                
+            </div> 
+                
+            </div>
+
+                <div style="padding-top: 20px;">
+                    <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid">Submit</button>
+                    <button type="reset" class="btn btn-danger">Reset</button>
+                </div>
+               
+
+
+
+            </form>
+        </div>
+    </div>
+</div>
