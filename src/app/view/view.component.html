@@ -34,7 +34,7 @@
 
             <h5 class="card-text">Experience: </h5>
             <p>company name:
-                {{selectedProfile?.experience.companyname }}
+                {{selectedProfile?.experience[0][0] }}
             </p>
             <p>postion:
                 {{selectedProfile?.experience.position }}
@@ -45,6 +45,15 @@
             <p>date of resign:
                 {{selectedProfile?.experience.dateofresign }}
             </p>
+
+            <div *ngFor="let exp of selectedProfile.get('experience').controls; let i = index">
+                <h3>Experience {{ i + 1 }}</h3>
+                <p><strong>Company Name:</strong> {{ exp.get('companyname').value }}</p>
+                <p><strong>Position:</strong> {{ exp.get('position').value }}</p>
+                <p><strong>Date of Joining:</strong> {{ exp.get('years.dateofjoining').value }}</p>
+                <p><strong>Date of Resign:</strong> {{ exp.get('years.dateofresign').value }}</p>
+              </div>
+              
 
 
 

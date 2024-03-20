@@ -15,6 +15,7 @@ export class ViewComponent {
   selectedLanguages:any;
 
   selectedLanguagesLength=0;
+profileForm: any;
   
 constructor(private route:ActivatedRoute,private profileService:ProfileService, private router:Router){}
   ngOnInit(){
@@ -30,7 +31,9 @@ constructor(private route:ActivatedRoute,private profileService:ProfileService, 
         .filter(lang => this.selectedProfile.languages[lang]);
         console.log('languages',this.selectedLanguages);
         this.selectedLanguagesLength=this.selectedLanguages.length
-        console.log(this.selectedLanguagesLength);   
+        console.log(this.selectedLanguagesLength);
+        console.log('selecetd exp',this.selectedProfile.experience[0].companyname);
+           
       })
       
     }
