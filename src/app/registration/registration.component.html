@@ -49,20 +49,18 @@
                  -->
                 
       
-          <div formGroupName="languages">
-                    <label for="">Languages Known: *</label>
-                    <div *ngFor="let lang of languagesList" style="padding-top: 5px;">
-                            <label for="" >
-                                <input type="checkbox"  (change)="checkboxchange($event)" formControlName="{{lang}}" > {{lang}}
-                            </label>
+                 <div formGroupName="languages">
+                    <div class="d-flex" >
+                        <label for="">Languages Known:  *</label>
+                        <div *ngFor="let lang of languagesList" style="padding-top: 5px;">
+                                <label for="" >
+                                    <input type="checkbox"  class="mx-1" (change)="checkboxchange($event)" formControlName="{{lang}}" > {{lang}}
+                                </label>
+                        </div>
+        
                     </div>
-                    <!-- <div>
-                        <span class="help-block" *ngIf="!profileForm.get('languages')?.valid&&profileForm.get('languages')?.touched" >please select atleast 1 language</span>
-    
-                        </div> -->
-                    
-            
-            </div> 
+                            
+                    </div> 
                     
        
               
@@ -129,7 +127,7 @@
        <!-- Experience -->
               <div formArrayName="experience">
                 <ng-container *ngFor="let exp of addexp,let i=index" [formGroupName]="i">
-                    <h5>Experience</h5>
+                    <h5>Experience {{i+1}}</h5>
 
                     <input type="text" placeholder="company name  *" formControlName="companyname">
                     <div *ngIf="profileForm.get('experience.' + i + '.companyname').invalid && profileForm.get('experience.' + i + '.companyname').touched">

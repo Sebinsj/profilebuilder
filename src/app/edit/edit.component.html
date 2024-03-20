@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 style="padding-bottom: 30px; padding-left: 30px; color: brown; ">New Profile Form</h1>
+            <h1 style="padding-bottom: 30px; padding-left: 30px; color: brown; ">Edit Profile Form</h1>
             <form action="" [formGroup]="profileFormEdit" (ngSubmit)="onEditProfile()">
 
                 <div class="form-group">
@@ -49,21 +49,18 @@
                  -->
                 
       
-          <div formGroupName="languages">
-                    <label for="">Languages Known: *</label>
-                    <div *ngFor="let lang of languagesList" style="padding-top: 5px;">
-                            <label for="" >
-                                <input type="checkbox"  (change)="checkboxchange($event)" formControlName="{{lang}}" > {{lang}}
-                            </label>
+                 <div formGroupName="languages">
+                    <div class="d-flex" >
+                        <label for="">Languages Known:  *</label>
+                        <div *ngFor="let lang of languagesList" style="padding-top: 5px;">
+                                <label for="" >
+                                    <input type="checkbox"  class="mx-1" (change)="checkboxchange($event)" formControlName="{{lang}}" > {{lang}}
+                                </label>
+                        </div>
+        
                     </div>
-                    <!-- <div>
-                        <span class="help-block" *ngIf="!profileForm.get('languages')?.valid&&profileForm.get('languages')?.touched" >please select atleast 1 language</span>
-    
-                        </div> -->
-                    
-            
-            </div> 
-                    
+                            
+                    </div> 
        
               
             <div formGroupName="address" style="padding-top: 20px;">
@@ -129,7 +126,7 @@
        <!-- Experience -->
               <div formArrayName="experience">
                 <ng-container *ngFor="let exp of addexp,let i=index" [formGroupName]="i">
-                    <h5>Experience</h5>
+                    <h5>Experience {{i+1}}</h5>
 
                     <input type="text" placeholder="company name  *" formControlName="companyname">
                     <div *ngIf="profileFormEdit.get('experience.' + i + '.companyname').invalid && profileFormEdit.get('experience.' + i + '.companyname').touched">

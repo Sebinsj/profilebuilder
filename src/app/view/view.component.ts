@@ -34,8 +34,8 @@ constructor(private route:ActivatedRoute,private profileService:ProfileService, 
         // console.log(this.selectedLanguagesLength);
         console.log(this.selectedProfile);
         
-        console.log('selecetd profile ex:',this.selectedProfile.experience);
-        console.log('selecetd profile first exp:',this.selectedProfile.experience[0]);
+        // console.log('selecetd profile ex:',this.selectedProfile.experience);
+        // console.log('selecetd profile first exp:',this.selectedProfile.experience[0]);
         
            
       })
