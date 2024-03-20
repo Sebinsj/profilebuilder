@@ -1,1 +1,179 @@
-<p>edit works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 style="padding-bottom: 30px; padding-left: 30px; color: brown; ">New Profile Form</h1>
+            <form action="" [formGroup]="profileFormEdit" (ngSubmit)="onEditProfile()">
+
+                <div class="form-group">
+                    <label for="fname">First Name:  *</label>
+                    <input type="text" class="form-control" id="fname" formControlName="firstName">
+                    <span class="help-block" *ngIf="!profileFormEdit.get('firstName')?.valid&&profileFormEdit.get('firstName')?.touched" >please enter a valid firstName</span>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="">Last Name:  </label>
+                    <input type="text" class="form-control"  formControlName="lastName">
+                </div>
+
+                <div class="form-group" style="padding-top: 20px;">
+                    <label for="dateofbirth">Date Of Birth: *</label>
+                    <input type="date" id="dateofbirth" name="dateofbirth" formControlName="dateofbirth">
+<div>
+    <span class="help-block" *ngIf="!profileFormEdit.get('dateofbirth')?.valid&&profileFormEdit.get('dateofbirth')?.touched" >date of birth is a required field </span>
+
+</div>
+                </div>
+
+                <div class="form-group" style="padding-top: 20px;">
+                    <label for="">Email:  *</label>
+                    <input type="text" class="form-control" formControlName="email">
+                    <span class="help-block" *ngIf="!profileFormEdit.get('email')?.valid&&profileFormEdit.get('email')?.touched" >please enter a valid email</span>
+                </div>
+                
+                <div class="form-group" style="padding-top: 20px;">
+                    <label for="" class="radio-inline">Gender: *
+                    <div *ngFor="let gender of genders" class="form-check form-check-inline">
+                        <input type="radio" name="gender" [value]="gender" formControlName="gender" >{{gender}}
+                    <span class="help-block" *ngIf="!profileFormEdit.get('gender')?.valid&&profileFormEdit.get('gender')?.touched" >gender is a required field </span>
+
+
+                    
+                    </div>
+                </label>
+                </div>
+                <!-- <div class="form-group">
+                    <label for="profileImage">Profile Image</label>
+                    <input type="file" id="profileImage" (change)="onFileSelected($event)" accept="image/*">
+                </div>
+                 -->
+                
+      
+          <div formGroupName="languages">
+                    <label for="">Languages Known: *</label>
+                    <div *ngFor="let lang of languagesList" style="padding-top: 5px;">
+                            <label for="" >
+                                <input type="checkbox"  (change)="checkboxchange($event)" formControlName="{{lang}}" > {{lang}}
+                            </label>
+                    </div>
+                    <!-- <div>
+                        <span class="help-block" *ngIf="!profileForm.get('languages')?.valid&&profileForm.get('languages')?.touched" >please select atleast 1 language</span>
+    
+                        </div> -->
+                    
+            
+            </div> 
+                    
+       
+              
+            <div formGroupName="address" style="padding-top: 20px;">
+                <label for="">Address :</label>
+                <div class="form-group" style="padding-top: 10px;">
+                    <label for="house_no">House No. :  *</label>
+                    <input type="house_no" class="form-control" id="house_no" formControlName="house_no">
+                    <div>
+                    <span class="help-block" *ngIf="!profileFormEdit.get('address.house_no')?.valid&&profileFormEdit.get('address.house_no')?.touched" >House No. is a required field</span>
+
+                    </div>
+
+                </div>
+
+
+                
+                <div class="form-group" style="padding-top: 10px;">
+                    <label for="street">Street</label>
+                    <input type="street" class="form-control" id="street" formControlName="street">
+
+                </div>
+
+
+ 
+                <div>
+                    <label for="state">State: *</label>
+                    <select id="state" formControlName="state" class="form-control">
+                      <option value="" disabled selected>Select State</option>
+                      <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+                    </select>
+                    <div>
+                        <span class="help-block" *ngIf="!profileFormEdit.get('address.state')?.valid&&profileFormEdit.get('address.state')?.touched" >state is a required field</span>
+                        </div>
+                  </div>
+                    
+
+                  <div>
+                    <label for="city">City: *</label>
+                    <select id="city" formControlName="city" class="form-control">
+                      <option value="" disabled selected>Select City</option>
+                      <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                    </select>
+                    <div>
+                        <span class="help-block" *ngIf="!profileFormEdit.get('address.city')?.valid&&profileFormEdit.get('address.city')?.touched" >city is a required field</span>
+                        </div>
+                    
+                  </div>
+                
+
+
+
+                <div class="form-group">
+                    <label for="pincode">Pincode:  *</label>
+                    <input type="text" class="form-control" id="pincode" formControlName="pincode">
+                    <div>
+                        <span class="help-block" *ngIf="!profileFormEdit.get('address.pincode')?.valid&&profileFormEdit.get('address.pincode')?.touched" >please enter a valid pincode</span>
+                        </div>
+
+                </div>
+
+            </div>
+
+       <!-- Experience -->
+              <div formArrayName="experience">
+                <ng-container *ngFor="let exp of addexp,let i=index" [formGroupName]="i">
+                    <h5>Experience</h5>
+
+                    <input type="text" placeholder="company name  *" formControlName="companyname">
+                    <div *ngIf="profileFormEdit.get('experience.' + i + '.companyname').invalid && profileFormEdit.get('experience.' + i + '.companyname').touched">
+                        <span class="help-block">Company Name is required.</span>
+                      </div>
+
+                    <input type="text" placeholder="position  *" formControlName="position">
+                    <div *ngIf="profileFormEdit.get('experience.' + i + '.position').invalid && profileFormEdit.get('experience.' + i + '.position').touched">
+                        <span class="help-block">Position is required.</span>
+                      </div>
+
+                    <div formGroupName="years"> 
+                        <input type="date" placeholder="date of joining  *" formControlName="dateofjoining">
+                        <div *ngIf="profileFormEdit.get('experience.' + i + '.years.dateofjoining').invalid && profileFormEdit.get('experience.' + i + '.years.dateofjoining').touched">
+                            <span class="help-block">Date of Joining is required.</span>
+                          </div>
+
+                        <input type="date" placeholder="date of resign  *" formControlName="dateofresign">
+                        <div *ngIf="profileFormEdit.get('experience.' + i + '.years.dateofresign').invalid && profileFormEdit.get('experience.' + i + '.years.dateofresign').touched">
+                            <span class="help-block">Date of Resign is required.</span>
+                          </div>
+                     </div>
+                    
+                    <button class="btn btn-sm btn-danger" (click)="onExpRemove(i)">Remove Experience</button>
+
+                    
+                </ng-container>
+               <div class="form-group">
+                <p class="btn btn-sm btn-primary" (click)="onExpAdd()">Add Experience</p>
+                
+            </div> 
+                
+            </div>
+
+              
+                <div style="padding-top: 20px;">
+                    <button type="submit" class="btn btn-primary" [disabled]="!profileFormEdit.valid || !languageSelected">Submit</button>
+                    <button type="reset" class="btn btn-danger">Reset</button>
+                </div>
+               
+
+
+
+            </form>
+        </div>
+    </div>
+</div>

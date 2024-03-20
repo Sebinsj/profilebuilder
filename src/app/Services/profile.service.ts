@@ -28,6 +28,11 @@ export class ProfileService{
        
            
        }
+       getTaskbyId(id:string){
+         return this.http.get<Profile>('https://profilebuilderbyssj-default-rtdb.firebaseio.com/profiles/'+id+'.json')
+  
+      }
+  
 
        deleteProfile(id:string){
         return this.http.delete('https://profilebuilderbyssj-default-rtdb.firebaseio.com/profiles/'+id+'.json')

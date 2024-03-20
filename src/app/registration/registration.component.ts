@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrl: './registration.component.css'
 })
 export class RegistrationComponent implements OnInit{
-  selectedFile: File;
+  
   constructor(private profileService:ProfileService,private router:Router){}
   
   profileForm!: FormGroup;
@@ -20,8 +20,8 @@ export class RegistrationComponent implements OnInit{
 
   genders=['Male','Female','Others'];
   languagesList:string[]=['english','hindi','malayalam','tamil','others']
-  cities=['a','b','c','d'];
-  states=['a','b','c','d'];
+  cities=['Ahmedabad','Amritsar','Bangalore','Cochin'];
+  states=["Andhra Pradesh","Arunachal Pradesh ","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli","Daman and Diu","Lakshadweep","National Capital Territory of Delhi","Puducherry"];
   get addexp(){
     return (<FormArray> this.profileForm.get('experience')).controls
 
