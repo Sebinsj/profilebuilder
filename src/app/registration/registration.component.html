@@ -1,18 +1,18 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 style="padding-bottom: 30px; padding-left: 30px; color: brown; ">Profile Form</h1>
+            <h1 style="padding-bottom: 30px; padding-left: 30px; color: brown; ">New Profile Form</h1>
             <form action="" [formGroup]="profileForm" (ngSubmit)="onAddprofile(profileForm.value)">
 
                 <div class="form-group">
-                    <label for="fname">First Name  *</label>
+                    <label for="fname">First Name:  *</label>
                     <input type="text" class="form-control" id="fname" formControlName="firstName">
                     <span class="help-block" *ngIf="!profileForm.get('firstName')?.valid&&profileForm.get('firstName')?.touched" >please enter a valid firstName</span>
 
                 </div>
 
                 <div class="form-group">
-                    <label for="">Last Name  </label>
+                    <label for="">Last Name:  </label>
                     <input type="text" class="form-control"  formControlName="lastName">
                 </div>
 
@@ -26,13 +26,13 @@
                 </div>
 
                 <div class="form-group" style="padding-top: 20px;">
-                    <label for="">Email  *</label>
+                    <label for="">Email:  *</label>
                     <input type="text" class="form-control" formControlName="email">
                     <span class="help-block" *ngIf="!profileForm.get('email')?.valid&&profileForm.get('email')?.touched" >please enter a valid email</span>
                 </div>
                 
                 <div class="form-group" style="padding-top: 20px;">
-                    <label for="" class="radio-inline">Gender :
+                    <label for="" class="radio-inline">Gender: *
                     <div *ngFor="let gender of genders" class="form-check form-check-inline">
                         <input type="radio" name="gender" [value]="gender" formControlName="gender" >{{gender}}
                     <span class="help-block" *ngIf="!profileForm.get('gender')?.valid&&profileForm.get('gender')?.touched" >gender is a required field </span>
@@ -69,7 +69,7 @@
             <div formGroupName="address" style="padding-top: 20px;">
                 <label for="">Address :</label>
                 <div class="form-group" style="padding-top: 10px;">
-                    <label for="house_no">House No. *</label>
+                    <label for="house_no">House No. :  *</label>
                     <input type="house_no" class="form-control" id="house_no" formControlName="house_no">
                     <div>
                     <span class="help-block" *ngIf="!profileForm.get('address.house_no')?.valid&&profileForm.get('address.house_no')?.touched" >House No. is a required field</span>
@@ -89,7 +89,7 @@
 
                 
   <div>
-    <label for="city">City *</label>
+    <label for="city">City: *</label>
     <select id="city" formControlName="city" class="form-control">
       <option value="" disabled selected>Select City</option>
       <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
@@ -101,7 +101,7 @@
   </div>
 
   <div>
-    <label for="state">State *</label>
+    <label for="state">State: *</label>
     <select id="state" formControlName="state" class="form-control">
       <option value="" disabled selected>Select State</option>
       <option *ngFor="let state of states" [value]="state">{{ state }}</option>
@@ -113,7 +113,7 @@
 
 
                 <div class="form-group">
-                    <label for="pincode">Pincode  *</label>
+                    <label for="pincode">Pincode:  *</label>
                     <input type="text" class="form-control" id="pincode" formControlName="pincode">
                     <div>
                         <span class="help-block" *ngIf="!profileForm.get('address.pincode')?.valid&&profileForm.get('address.pincode')?.touched" >please enter a valid pincode</span>

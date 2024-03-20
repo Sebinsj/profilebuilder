@@ -31,7 +31,7 @@
 
 /* Custom sidebar styling */
 .sidebar {
-  background-color:  #00246B;
+  background-color:  #1c3414;
   color: #fff;
   height: auto;
   padding-top: 20px;
@@ -46,10 +46,11 @@
   padding: 10px 15px;
 }
 .nav-link:hover {
-  background-color: #5a626898;
+  background-color: #134800;
 }
 /* Custom main content styling */
 .main-content {
+  
   padding-top: 0px;
   padding-left: 50px;
 }
