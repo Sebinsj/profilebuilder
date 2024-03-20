@@ -29,10 +29,14 @@ constructor(private route:ActivatedRoute,private profileService:ProfileService, 
         this.isFetching=false
         this.selectedLanguages = Object.keys(this.selectedProfile.languages)
         .filter(lang => this.selectedProfile.languages[lang]);
-        console.log('languages',this.selectedLanguages);
+        // console.log('languages',this.selectedLanguages);
         this.selectedLanguagesLength=this.selectedLanguages.length
-        console.log(this.selectedLanguagesLength);
-        console.log('selecetd exp',this.selectedProfile.experience[0].companyname);
+        // console.log(this.selectedLanguagesLength);
+        console.log(this.selectedProfile);
+        
+        console.log('selecetd profile ex:',this.selectedProfile.experience);
+        console.log('selecetd profile first exp:',this.selectedProfile.experience[0]);
+        
            
       })
       
