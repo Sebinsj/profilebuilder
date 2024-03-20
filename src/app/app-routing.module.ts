@@ -10,7 +10,7 @@ const routes: Routes = [
   {path:'Home',component:HomeComponent},
   {path:'Registration',component:RegistrationComponent},
   {path:'ViewProfile/:id',component:ViewComponent},
-  {path:'EditProfile/:id',component:EditComponent},
+  {path:'EditProfile/:id/:len',component:EditComponent},
 ];
 
 @NgModule({

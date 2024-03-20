@@ -29,7 +29,7 @@
             <p>Pincode:
                 {{selectedProfile?.address.pincode }}
             </p>
-<h5>Previous Experience:</h5>
+              <h5>Previous Experience:</h5>
             <div *ngFor="let exp of selectedProfile?.experience; let i=index">
               <h5 class="card-text">Experience {{i+1}}: </h5>
               <p>Company Name: {{ exp.companyname }}</p>
@@ -38,33 +38,6 @@
               <p>Date of Resign: {{ exp.years.dateofresign }}</p>
             </div>
             
-<!-- 
-        <div *ngFor="let exp of selectedProfile.experience; let i=index">
-          <h5 class="card-text">Experience {{i+1}}: </h5>
-            <p>company name:
-                {{selectedProfile.experience[i-1].companyname }}
-            </p>
-            <p>postion:
-                {{selectedProfile.experience[i-1].position }}
-            </p>
-            <p>date of joining:
-                {{selectedProfile.experience[i-1].years.dateofjoining}}
-            </p>
-            <p>date of resign:
-              {{selectedProfile.experience[i-1].years.dateofresign}}
-          </p>
-        </div> -->
-            
-        
-        <!-- <div *ngFor="let exp of selectedProfile.get('experience').controls; let i = index">
-                <h3>Experience {{ i + 1 }}</h3>
-                <p><strong>Company Name:</strong> {{ exp.get('companyname').value }}</p>
-                <p><strong>Position:</strong> {{ exp.get('position').value }}</p>
-                <p><strong>Date of Joining:</strong> {{ exp.get('years.dateofjoining').value }}</p>
-                <p><strong>Date of Resign:</strong> {{ exp.get('years.dateofresign').value }}</p>
-              </div>
-               -->
-
 
             <h5 class="card-text">Languages Known: </h5>
             <p>{{selectedLanguages}}</p>

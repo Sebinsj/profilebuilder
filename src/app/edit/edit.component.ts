@@ -96,12 +96,12 @@ export class EditComponent {
             others:this.selectedProfile.languages.others,
           },
 
-          address:{
-            house_no:this.selectedProfile.house_no,
-            street:this.selectedProfile.street,
-            city:this.selectedProfile.city,
-            state:this.selectedProfile.state,
-            pincode:this.selectedProfile.pincode,
+          address: {
+            house_no: this.selectedProfile.address.house_no,
+            street: this.selectedProfile.address.street,
+            city: this.selectedProfile.address.city,
+            state: this.selectedProfile.address.state,
+            pincode: this.selectedProfile.address.pincode,
           },
           experience:this.selectedProfile.experience
 
