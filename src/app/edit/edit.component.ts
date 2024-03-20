@@ -162,7 +162,12 @@ checkboxchange(event:any){
 }
 
 onEditProfile(){
+  this.profileService.editProfile(this.profileId,this.profileFormEdit.value).subscribe(()=>{
+    this.router.navigate(['/'])
 
+  })
 }
+
+
 
 }

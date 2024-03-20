@@ -37,4 +37,9 @@ export class ProfileService{
        deleteProfile(id:string){
         return this.http.delete('https://profilebuilderbyssj-default-rtdb.firebaseio.com/profiles/'+id+'.json')
        }
+       
+       editProfile(id,value){
+         return this.http.put('https://profilebuilderbyssj-default-rtdb.firebaseio.com/profiles/'+id+'.json',value)
+       
+       }
 }
