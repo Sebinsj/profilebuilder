@@ -43,7 +43,7 @@ export class EditComponent {
   
   profileFormEdit!: FormGroup;
   userSelectedLanguages:[]=[];
-  count=0
+  exp:any;
 
   
   languageSelected:boolean=false;
@@ -56,6 +56,7 @@ export class EditComponent {
   selectedLanguageCount:any
   selectedProfile:any;
   selectedProfileId:string='';
+  expArray:any;
   
   
   
@@ -66,7 +67,7 @@ export class EditComponent {
   ngOnInit(){
     this.profileId=this.route.snapshot.paramMap.get('id');
     this.selectedLanguageCount=this.route.snapshot.paramMap.get('len');
-    console.log(this.selectedLanguageCount);
+    console.log('count',this.selectedLanguageCount);
    
       if (this.selectedLanguageCount>0){
         this.languageSelected=true
@@ -103,15 +104,24 @@ export class EditComponent {
             state: this.selectedProfile.address.state,
             pincode: this.selectedProfile.address.pincode,
           },
-          experience:this.selectedProfile.experience
+          experience:this.selectedProfile.experience.forEach((exp:any)=>{
+            this.exp=exp
+             this.onExpEdit()
+             console.log('exp',exp);
+             
+            
+            
+          })
 
 
         })
+        
 
 
       })
+      
     }
-
+    
     
 
 
@@ -142,18 +152,31 @@ onExpRemove(index:any):void{
   (this.profileFormEdit.get('experience')as FormArray).removeAt(index);
 
 }
+onExpEdit(){
+  const newExp = new FormGroup({
+    companyname: new FormControl(this.exp.companyname, Validators.required),
+    position: new FormControl(this.exp.position, Validators.required),
+    years: new FormGroup({
+      dateofjoining: new FormControl(this.exp.years.dateofjoining, Validators.required),
+      dateofresign: new FormControl(this.exp.years.dateofresign, Validators.required),
+    }),
+  });
+  (this.profileFormEdit.get('experience') as FormArray).push(newExp);
+
+  
+}
 checkboxchange(event:any){
   if(event.target.checked){
-    this.count+=1
-    console.log(this.count);
+    this.selectedLanguageCount+=1
+    console.log(this.selectedLanguageCount);
     
   }
   else{
-    this.count-=1
-    console.log(this.count);
+    this.selectedLanguageCount-=1
+    console.log(this.selectedLanguageCount);
     
   }
-  if(this.count>0){
+  if(this.selectedLanguageCount>0){
     this.languageSelected=true
   }
   else{

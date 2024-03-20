@@ -20,7 +20,7 @@
             
             <h5>  Fullname: {{ prof.firstName }} {{prof.lastName}}</h5>
             <p>   Gender: {{prof.gender}} </p>
-            <p>   Date Of Birth(YYYY:MM:DD): {{prof.dateofbirth}} </p>
+            <p>   Date Of Birth: {{prof.dateofbirth | date}} </p>
             
             <button class="btn-delete" (click)="onDeleteProfile(prof.id)">Delete</button>
             <!-- <button class="btn-edit" >Edit </button> -->

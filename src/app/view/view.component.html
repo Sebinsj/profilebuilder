@@ -34,8 +34,8 @@
               <h5 class="card-text">Experience {{i+1}}: </h5>
               <p>Company Name: {{ exp.companyname }}</p>
               <p>Position: {{ exp.position }}</p>
-              <p>Date of Joining: {{ exp.years.dateofjoining }}</p>
-              <p>Date of Resign: {{ exp.years.dateofresign }}</p>
+              <p>Date of Joining: {{ exp.years.dateofjoining | date }}</p>
+              <p>Date of Resign: {{ exp.years.dateofresign | date}}</p>
             </div>
             
 
