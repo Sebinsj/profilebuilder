@@ -20,11 +20,11 @@ export class EditComponent {
       // profileImage: new FormControl(null),
 
       languages:new FormGroup({
-        english:new FormControl(false,Validators.required),
-        hindi:new FormControl(false,Validators.required),
-        malayalam:new FormControl(false,Validators.required),
-        tamil:new FormControl(false,Validators.required),
-        others:new FormControl(false,Validators.required),
+        english:new FormControl(false),
+        hindi:new FormControl(false),
+        malayalam:new FormControl(false),
+        tamil:new FormControl(false),
+        others:new FormControl(false),
       }),
 
       address:new FormGroup({
@@ -104,7 +104,7 @@ export class EditComponent {
             state: this.selectedProfile.address.state,
             pincode: this.selectedProfile.address.pincode,
           },
-          experience:this.selectedProfile.experience.forEach((exp:any)=>{
+          experience:this.selectedProfile.experience?.forEach((exp:any)=>{
             this.exp=exp
              this.onExpEdit()
              console.log('exp',exp);

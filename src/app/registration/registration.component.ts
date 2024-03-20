@@ -48,11 +48,11 @@ export class RegistrationComponent implements OnInit{
         // profileImage: new FormControl(null),
 
         languages:new FormGroup({
-          english:new FormControl(false,Validators.required),
-          hindi:new FormControl(false,Validators.required),
-          malayalam:new FormControl(false,Validators.required),
-          tamil:new FormControl(false,Validators.required),
-          others:new FormControl(false,Validators.required),
+          english:new FormControl(false),
+          hindi:new FormControl(false),
+          malayalam:new FormControl(false),
+          tamil:new FormControl(false),
+          others:new FormControl(false),
         }),
 
         address:new FormGroup({
