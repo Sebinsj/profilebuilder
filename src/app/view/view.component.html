@@ -8,15 +8,20 @@
             <div *ngIf="isFetching">
                 <h5>Loading........</h5>
             </div>
+            <h1>Profile Details</h1>
             
+            <h5 class="card-title" style="padding-top: 10px;">FirstName: </h5>
+            <p>{{ selectedProfile?.firstName }}</p>
+            <h5 class="card-text">LastName: </h5>
+            <p>{{ selectedProfile?.lastName }}</p>
+            <h5 class="card-text">Email: </h5>
+            <p>{{selectedProfile?.email }}</p>
+            <h5 class="card-text">Date of birth:  </h5>
+            <p>{{selectedProfile?.dateofbirth |date }}</p>
+            <h5 class="card-text">Gender: </h5>
+            <p>{{selectedProfile?.gender }}</p>
             
-            <h1 class="card-title">FirstName: {{ selectedProfile?.firstName }}</h1>
-            <h5 class="card-text">lastName: {{ selectedProfile?.lastName }}</h5>
-            <h5 class="card-text">email: {{selectedProfile?.email }}</h5>
-            <h5 class="card-text">dob: {{selectedProfile?.dateofbirth }}</h5>
-            <h5 class="card-text">gender: {{selectedProfile?.gender }}</h5>
-            
-            <h5 class="card-text">address: </h5>
+            <h5 class="card-text">Address: </h5>
             <p>House No.:
                 {{selectedProfile?.address.house_no }}
             </p>
@@ -29,21 +34,26 @@
             <p>Pincode:
                 {{selectedProfile?.address.pincode }}
             </p>
-              <h5>Previous Experience:</h5>
-            <div *ngFor="let exp of selectedProfile?.experience; let i=index">
-              <h5 class="card-text">Experience {{i+1}}: </h5>
-              <p>Company Name: {{ exp.companyname }}</p>
-              <p>Position: {{ exp.position }}</p>
-              <p>Date of Joining: {{ exp.years.dateofjoining | date }}</p>
-              <p>Date of Resign: {{ exp.years.dateofresign | date}}</p>
-            </div>
+              <h5>Previous Experiences:</h5>
+              <div *ngIf="selectedProfile?.experience">
+                <div *ngFor="let exp of selectedProfile?.experience; let i=index">
+                  <h5 class="card-text">Experience {{i+1}}: </h5>
+                  <p>Company Name: {{ exp.companyname }}</p>
+                  <p>Position: {{ exp.position }}</p>
+                  <p>Date of Joining: {{ exp.years.dateofjoining | date }}</p>
+                  <p>Date of Resign: {{ exp.years.dateofresign | date}}</p>
+                </div>
+              </div>
+              <div *ngIf="!selectedProfile?.experience">
+                <p>No previous experience available.</p>
+              </div>
             
 
             <h5 class="card-text">Languages Known: </h5>
             <p>{{selectedLanguages}}</p>
             <div class="mt-auto">
-              <button class="btn btn-primary" (click)="viewEdit()">Edit</button>
-              <button class="btn btn-secondary" routerLink="/Home">Back To All Tasks</button>
+              <button class="btn btn-edit" (click)="viewEdit()"><i class="fa-solid fa-pen"></i>  Edit</button>
+              <button class="btn btn-back" routerLink="/Home"><i class="fa-solid fa-left-long"></i>  Back To All Profiles</button>
             </div>
           </div>
         </div>

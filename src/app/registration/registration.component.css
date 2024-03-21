@@ -3,3 +3,24 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size:x-small;
 }
+.btn-submit {
+    background-color: #3bad0ecb;
+  }
+  
+  .btn-submit:hover {
+    background-color: #0ca207;
+  }
+
+  .btn-reset {
+    background-color: rgba(255, 0, 0, 0.77);
+  }
+  
+  .btn-reset:hover {
+    background-color: red;
+  }
+  .btn-custom-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.25;
+  }
+  

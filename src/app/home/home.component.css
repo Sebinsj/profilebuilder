@@ -1,6 +1,29 @@
 .form-control{
     background-color: rgba(164, 244, 164, 0.816);
-    border-radius: 5px;
+    border-radius: 10px;
     border-width: 2px;
     border-color: black;
 }
+.btn-delete {
+    background-color:rgba(255, 0, 0, 0.751);
+  }
+  
+  .btn-delete:hover {
+    background-color: red;
+  }
+  
+  .btn-view {
+    background-color: #ff8c11cf;
+  }
+  
+  .btn-view:hover {
+    background-color: #ff8c11;
+  }
+  .btn-addnew {
+    background-color: #000000d0;
+    color: white;
+  }
+  
+  .btn-addnew:hover {
+    background-color: #000000;
+  }

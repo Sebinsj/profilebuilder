@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
-      <h1 class="heading">All Profiles</h1>
-      <button class="btn btn-primary" routerLink="/Registration">New Registration Form</button>
+      <h1 class="heading" style="padding-top: 10px;">All Profiles</h1>
+      <button class="btn btn-addnew" routerLink="/Registration"><i class="fa-solid fa-plus"></i>   New Registration Form</button>
 
       <div *ngIf="allProfiles.length<1&&!isFetching">
       <h5>No Profiles Available</h5>
@@ -18,13 +18,16 @@
 
           <div class="form-control">
             
-            <h5>  Fullname: {{ prof.firstName }} {{prof.lastName}}</h5>
-            <p>   Gender: {{prof.gender}} </p>
-            <p>   Date Of Birth: {{prof.dateofbirth | date}} </p>
+            <h6>  Fullname: </h6>
+            <p>{{ prof.firstName }} {{prof.lastName}}</p>
+            <h6> Gender:</h6>
+            <p>   {{prof.gender}} </p>
+            <h6> Date Of Birth:</h6>
+            <p>   {{prof.dateofbirth | date}} </p>
             
-            <button class="btn-delete" (click)="onDeleteProfile(prof.id)">Delete</button>
+            <button class="btn btn-delete" (click)="onDeleteProfile(prof.id)"><i class="fa-solid fa-trash-can"></i>  Delete</button>
             <!-- <button class="btn-edit" >Edit </button> -->
-            <button class="btn-view" (click)="onViewProfile(prof.id)">View</button>
+            <button class="btn btn-view" (click)="onViewProfile(prof.id)"><i class="fa-solid fa-eye"></i>  View</button>
 
             
           </div>
